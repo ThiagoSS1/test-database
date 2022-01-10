@@ -4,15 +4,18 @@ import Database from './core/data/connections/Database';
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 app.use(express.json())
 
 app.get("/", (req: Request, res: Response) => {
     res.send("Hello World!");
 })
 
+
 new Database()
     .openConnection()
-    .then(() => app.listen(8080, () => console.log("Server started on port 8080")))
+    .then(() => app.listen(PORT, () => console.log(`Server started on port ${PORT}`)))
 
 
 
